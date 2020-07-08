@@ -101,15 +101,15 @@ Here is some parts of log message when running the project program: <br>
 
 * Spark log: <br>
 
-    2020-07-08 13:24:19 INFO  SparkContext:54 - Running Spark version 2.4.5
-    2020-07-08 13:24:20 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-    2020-07-08 13:24:20 INFO  SparkContext:54 - Submitted application: CassandraConnector
-    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls to: bryantliu
-    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls to: bryantliu
-    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls groups to: 
-    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls groups to: 
-    2020-07-08 13:24:20 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(bryantliu); groups with view permissions: Set(); users  with modify permissions: Set(bryantliu); groups with modify permissions: Set()
-    2020-07-08 13:24:20 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 56879.
+    2020-07-08 13:24:19 INFO  SparkContext:54 - Running Spark version 2.4.5<br>
+    2020-07-08 13:24:20 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable<br>
+    2020-07-08 13:24:20 INFO  SparkContext:54 - Submitted application: CassandraConnector<br>
+    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls to: bryantliu<br>
+    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls to: bryantliu<br>
+    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls groups to: <br>
+    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls groups to: <br>
+    2020-07-08 13:24:20 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(bryantliu); groups with view permissions: Set(); users  with modify permissions: Set(bryantliu); groups with modify permissions: Set()<br>
+    2020-07-08 13:24:20 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 56879.<br>
     ......
 
 
