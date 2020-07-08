@@ -60,6 +60,8 @@ class DatabaseKing extends Actor with ActorLogging {
       this.currentTaskNum += 1
       if (this.currentTaskNum.equals(10)) {
         log.info("Finish all job!")
+        // Remember stop to close Spark normally.
+        this.sc.stop()
         context.system.terminate()
       }
 
