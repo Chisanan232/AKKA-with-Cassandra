@@ -45,8 +45,8 @@ It supports feature about checking which keyword could use at next step and auto
 Here are some basic element of Cassandra: <br>
 * Keyspace <br>
 Here is the explanation from document: <br>
-ps Cassandra Official document URL: <https://www.tutorialspoint.com/cassandra/index.htm>
-`A keyspace in Cassandra is a namespace that defines data replication on nodes. A cluster contains one keyspace per node. Given below is the syntax for creating a keyspace using the statement CREATE KEYSPACE.`
+ps Cassandra Official document URL: <https://www.tutorialspoint.com/cassandra/index.htm> <br>
+`A keyspace in Cassandra is a namespace that defines data replication on nodes. A cluster contains one keyspace per node. Given below is the syntax for creating a keyspace using the statement CREATE KEYSPACE.` <br>
 In other words, a keyspace be composed of multiple tables. <br>
 
 * Table <br>
@@ -57,7 +57,7 @@ Show all Keyspaces: <br>
     DESCRIBE KEYSPACES
 
 Running-result of command line: <br>
-![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/show-all-keyspace.png)
+![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/cqlsh/show-all-keyspace.png)
 <br>
 
 Go into one keyspace. <br>
@@ -68,10 +68,10 @@ It could create keyspace and define some attributes by develop-self
 
     CREATE KEYSPACE <keyspace name> WITH replication = {'class': <replication strage type>, 'replication_factor' : <replication amount>};
     
-For parameter 'replication strage type', please refer to the document <https://docs.datastax.com/en/cql-oss/3.3/cql/cql_reference/cqlCreateKeyspace.html> 
+For parameter 'replication strage type', please refer to the document <https://docs.datastax.com/en/cql-oss/3.3/cql/cql_reference/cqlCreateKeyspace.html>. <br>
 
 Running-result of command line: <br>
-![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/show-all-keyspace.png)
+![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/cqlsh/show-all-keyspace.png)
 <br>
 
 Show all tables in the keyspace. <br>
@@ -79,7 +79,7 @@ Show all tables in the keyspace. <br>
     DESCRIBE TABLES
 
 Running-result of command line: <br>
-![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/show-all-tables.png)
+![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/cqlsh/show-all-tables.png)
 <br>
 
 Create table: <br>
@@ -100,47 +100,47 @@ By the way, the option 'PRIMARY KEY' also could be set like list. So the cql she
 Here is some parts of log message when running the project program: <br>
 
 * Spark log: <br>
-`
-2020-07-08 13:24:19 INFO  SparkContext:54 - Running Spark version 2.4.5
-2020-07-08 13:24:20 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-2020-07-08 13:24:20 INFO  SparkContext:54 - Submitted application: CassandraConnector
-2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls to: bryantliu
-2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls to: bryantliu
-2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls groups to: 
-2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls groups to: 
-2020-07-08 13:24:20 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(bryantliu); groups with view permissions: Set(); users  with modify permissions: Set(bryantliu); groups with modify permissions: Set()
-2020-07-08 13:24:20 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 56879.
-......
-`
+
+    2020-07-08 13:24:19 INFO  SparkContext:54 - Running Spark version 2.4.5
+    2020-07-08 13:24:20 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+    2020-07-08 13:24:20 INFO  SparkContext:54 - Submitted application: CassandraConnector
+    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls to: bryantliu
+    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls to: bryantliu
+    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls groups to: 
+    2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls groups to: 
+    2020-07-08 13:24:20 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(bryantliu); groups with view permissions: Set(); users  with modify permissions: Set(bryantliu); groups with modify permissions: Set()
+    2020-07-08 13:24:20 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 56879.
+    ......
+
 
 * Code log: <br>
-`
-[INFO] [07/08/2020 13:24:21.618] [AkkaWithCassandra-akka.actor.default-dispatcher-4] [akka://AkkaWithCassandra/user/DatabaseKing] Will prepare to save data to database.
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-8] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-0] Receive task!
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-7] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-1] Receive task!
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-6] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-2] Receive task!
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-5] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-3] Receive task!
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-2] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-4] Receive task!
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-9] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-5] Receive task!
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-3] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-7] Receive task!
-[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-10] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-6] Receive task!
-[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-12] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-8] Receive task!
-[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-15] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-9] Receive task!
-[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Got data. Thank you for your help!
-......
-[INFO] [07/08/2020 13:24:26.030] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Got data. Thank you for your help!
-......
-2020-07-08 13:24:27 INFO  DAGScheduler:54 - Job 9 finished: runJob at RDDFunctions.scala:36, took 0.046523 s
-[INFO] [07/08/2020 13:24:27.518] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Finish all job!
-`
+
+    [INFO] [07/08/2020 13:24:21.618] [AkkaWithCassandra-akka.actor.default-dispatcher-4] [akka://AkkaWithCassandra/user/DatabaseKing] Will prepare to save data to database.
+    [INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-8] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-0] Receive task!
+    [INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-7] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-1] Receive task!
+    [INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-6] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-2] Receive task!
+    [INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-5] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-3] Receive task!
+    [INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-2] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-4] Receive task!
+    [INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-9] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-5] Receive task!
+    [INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-3] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-7] Receive task!
+    [INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-10] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-6] Receive task!
+    [INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-12] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-8] Receive task!
+    [INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-15] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-9] Receive task!
+    [INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Got data. Thank you for your help!
+    ......
+    [INFO] [07/08/2020 13:24:26.030] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Got data. Thank you for your help!
+    ......
+    2020-07-08 13:24:27 INFO  DAGScheduler:54 - Job 9 finished: runJob at RDDFunctions.scala:36, took 0.046523 s
+    [INFO] [07/08/2020 13:24:27.518] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Finish all job!
+
 
 Verify the data in database: <br>
 
     SELECT * from testwithakka ;
 
 Running-result of command line: <br>
-![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/show-data-with-table.png)
+![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/cqlsh/show-data-with-table.png)
 <br>
 
-The data is the result after running several times. The latest data is columns 'index2', 'index3', 'index4' and 'index5' are values '20', '11', '11' and '11'. 
+The data is the result after running several times. The latest data is columns 'index2', 'index3', 'index4' and 'index5' are values '20', '11', '11' and '11'. <br>
 
