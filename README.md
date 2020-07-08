@@ -100,118 +100,38 @@ By the way, the option 'PRIMARY KEY' also could be set like list. So the cql she
 Here is some parts of log message when running the project program: <br>
 
 * Spark log: <br>
-`
-2020-07-08 13:24:19 INFO  SparkContext:54 - Running Spark version 2.4.5
-`
-<br>
-`
-2020-07-08 13:24:20 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-`
-<br>
-`
-2020-07-08 13:24:20 INFO  SparkContext:54 - Submitted application: CassandraConnector
-`
-<br>
-`
-2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls to: bryantliu
-`
-<br>
-`
-2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls to: bryantliu
-`
-<br>
-`
-2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls groups to: 
-`
-<br>
-`
-2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls groups to: 
-`
-<br>
-`
-2020-07-08 13:24:20 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(bryantliu); groups with view permissions: Set(); users  with modify permissions: Set(bryantliu); groups with modify permissions: Set()
-`
-<br>
-`
-2020-07-08 13:24:20 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 56879.
-`
-<br>
-`
-......
-`
+
+2020-07-08 13:24:19 INFO  SparkContext:54 - Running Spark version 2.4.5  <br>
+2020-07-08 13:24:20 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable  <br>
+2020-07-08 13:24:20 INFO  SparkContext:54 - Submitted application: CassandraConnector  <br>
+2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls to: bryantliu  <br>
+2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls to: bryantliu  <br>
+2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing view acls groups to:   <br>
+2020-07-08 13:24:20 INFO  SecurityManager:54 - Changing modify acls groups to:   <br>
+2020-07-08 13:24:20 INFO  SecurityManager:54 - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(bryantliu); groups with view permissions: Set(); users  with modify permissions: Set(bryantliu); groups with modify permissions: Set()  <br>
+2020-07-08 13:24:20 INFO  Utils:54 - Successfully started service 'sparkDriver' on port 56879.  <br>
 <br>
 
-* Code log: <br>
+* AKKA Code log:  <br>
 
-`
-[INFO] [07/08/2020 13:24:21.618] [AkkaWithCassandra-akka.actor.default-dispatcher-4] [akka://AkkaWithCassandra/user/DatabaseKing] Will prepare to save data to database.
-`
+[INFO] [07/08/2020 13:24:21.618] [AkkaWithCassandra-akka.actor.default-dispatcher-4] [akka://AkkaWithCassandra/user/DatabaseKing] Will prepare to save data to database.  <br>
+[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-8] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-0] Receive task!  <br>
+[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-7] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-1] Receive task!  <br>
+[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-6] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-2] Receive task!  <br>
+[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-5] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-3] Receive task!  <br>
+[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-2] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-4] Receive task!  <br>
+[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-9] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-5] Receive task!  <br>
+[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-3] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-7] Receive task!  <br>
+[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-10] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-6] Receive task!  <br>
+[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-12] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-8] Receive task!  <br>
+[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-15] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-9] Receive task!  <br>
+[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Got data. Thank you for your help!  <br>
+......  <br>
+[INFO] [07/08/2020 13:24:26.030] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Got data. Thank you for your help!  <br>
+......  <br>
+2020-07-08 13:24:27 INFO  DAGScheduler:54 - Job 9 finished: runJob at RDDFunctions.scala:36, took 0.046523 s  <br>
+[INFO] [07/08/2020 13:24:27.518] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Finish all job!  <br>
 <br>
-`
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-8] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-0] Receive task!
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-7] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-1] Receive task!
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-6] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-2] Receive task!
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-5] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-3] Receive task!
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-2] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-4] Receive task!
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-9] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-5] Receive task!
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:21.627] [AkkaWithCassandra-akka.actor.default-dispatcher-3] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-7] Receive task!
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-10] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-6] Receive task!
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-12] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-8] Receive task!
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-15] [akka://AkkaWithCassandra/user/DatabaseKing/data-soldier-9] Receive task!
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:21.628] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Got data. Thank you for your help!
-`
-<br>
-`
-......
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:26.030] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Got data. Thank you for your help!
-`
-<br>
-`
-......
-`
-<br>
-`
-2020-07-08 13:24:27 INFO  DAGScheduler:54 - Job 9 finished: runJob at RDDFunctions.scala:36, took 0.046523 s
-`
-<br>
-`
-[INFO] [07/08/2020 13:24:27.518] [AkkaWithCassandra-akka.actor.default-dispatcher-11] [akka://AkkaWithCassandra/user/DatabaseKing] Finish all job!
-`
-<br>
-
 
 Verify the data in database: <br>
 
