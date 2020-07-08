@@ -9,8 +9,6 @@ Study and learn about database. For decentralized system, it must be Cassandra.
 <br>
 
 ### Skills
-This project classifies it to 2 parts. One is crawler, another one is other prcesses logic-implements (like Multiple Actors relationship, Send message mechanism and build Kafka producer, consumer, etc). <br>
-
 Language: Scala <br>
 Version: 2.12 <br>
 Framework: Spark (version: 2.4.5), AKKA (version: 2.4.20) <br>
