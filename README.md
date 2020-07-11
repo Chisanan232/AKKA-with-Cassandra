@@ -95,6 +95,29 @@ By the way, the option 'PRIMARY KEY' also could be set like list. So the cql she
 
 <br>
 
+
+### Build connector with API
+It need to save data by Spark with datastax driver. <br>
+Build a SparkContext first, <br>
+
+```scala
+// Build a Spark interface connector with database Cassandra
+// Build and set Spark configuration
+val conf = new SparkConf(true)
+  .set("spark.cassandra.connection.host", "127.0.0.1")     // Connect to database Cassandra
+  .setMaster("local[*]")
+  .setAppName("CassandraConnector")
+// Apply configuration and build Spark 
+val sc = new SparkContext(conf)
+```
+
+Call method 'saveToCassandra' to write data into database. <br>
+```scala
+val scDataframe = sc.parallelize(Seq(data))
+scDataframe.saveToCassandra(keyspace, table, SomeColumns("column1", "column2", "column3", "column4", "column5"))
+```
+
+
 ### Running Result
 Here is some parts of log message when running the project program: <br>
 
