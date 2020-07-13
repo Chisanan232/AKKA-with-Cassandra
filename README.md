@@ -9,8 +9,6 @@ Study and learn about database. For decentralized system, it must be Cassandra.
 <br>
 
 ### Skills
-This project classifies it to 2 parts. One is crawler, another one is other prcesses logic-implements (like Multiple Actors relationship, Send message mechanism and build Kafka producer, consumer, etc). <br>
-
 Language: Scala <br>
 Version: 2.12 <br>
 Framework: Spark (version: 2.4.5), AKKA (version: 2.4.20) <br>
@@ -46,7 +44,8 @@ Here are some basic element of Cassandra: <br>
 * Keyspace <br>
 Here is the explanation from document: <br>
 ps Cassandra Official document URL: <https://www.tutorialspoint.com/cassandra/index.htm> <br>
-`A keyspace in Cassandra is a namespace that defines data replication on nodes. A cluster contains one keyspace per node. Given below is the syntax for creating a keyspace using the statement CREATE KEYSPACE.` <br>
+> A keyspace in Cassandra is a namespace that defines data replication on nodes. A cluster contains one keyspace per node. Given below is the syntax for creating a keyspace using the statement CREATE KEYSPACE. <br>
+
 In other words, a keyspace be composed of multiple tables. <br>
 
 * Table <br>
@@ -95,6 +94,29 @@ By the way, the option 'PRIMARY KEY' also could be set like list. So the cql she
     CREATE TABLE testWithAkka ( index1 int, index2 int, index3 int , index4 int , index5 int , PRIMARY KEY (index1) );
 
 <br>
+
+
+### Build connector with API
+It need to save data by Spark with datastax driver. <br>
+Build a SparkContext first, <br>
+
+```scala
+// Build a Spark interface connector with database Cassandra
+// Build and set Spark configuration
+val conf = new SparkConf(true)
+  .set("spark.cassandra.connection.host", "127.0.0.1")     // Connect to database Cassandra
+  .setMaster("local[*]")
+  .setAppName("CassandraConnector")
+// Apply configuration and build Spark 
+val sc = new SparkContext(conf)
+```
+
+Call method 'saveToCassandra' to write data into database. <br>
+```scala
+val scDataframe = sc.parallelize(Seq(data))
+scDataframe.saveToCassandra(keyspace, table, SomeColumns("column1", "column2", "column3", "column4", "column5"))
+```
+
 
 ### Running Result
 Here is some parts of log message when running the project program: <br>
