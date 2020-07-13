@@ -137,28 +137,84 @@ In the lab, the CQL shell is <br>
 
 
 ### Build connector with API
-It need to save data by Spark with datastax driver. <br>
-Build a SparkContext first, <br>
+It absolutely need to use Spark configuration to build database connector with datastax driver by importing package **spark-cassandra-connector**. <br>
+Create Spark configuration and build SparkContext first, <br>
 
 ```scala
 // Build a Spark interface connector with database Cassandra
 // Build and set Spark configuration
 val conf = new SparkConf(true)
-  .set("spark.cassandra.connection.host", "127.0.0.1")     // Connect to database Cassandra
+  .set("spark.cassandra.connection.host", "10.0.0.1")     // Connect to database Cassandra
   .setMaster("local[*]")
   .setAppName("CassandraConnector")
 // Apply configuration and build Spark 
 val sc = new SparkContext(conf)
 ```
 
-Call method 'saveToCassandra' to write data into database. <br>
+Import CassandraConnector from package. <br>
+
+```scala
+import com.datastax.spark.connector.cql.CassandraConnector
+```
+
+Build database connector directly with Spark configuration. <br>
+
+```scala
+val connector = CassandraConnector.apply(sc.getConf)
+```
+
+Execute CQL operator. <br>
+
+```scala
+val CASSANDRA_SCHEMA = "test_keyspace"
+val table = "testwithakka"
+
+val session = connector.openSession
+
+val insert = "INSERT INTO " + CASSANDRA_SCHEMA + "." + table + " (index1 , index2 , index3 , index4 , index5) VALUES ( 24, 24, 24, 24, 24);"
+
+session.execute(insert)
+```
+
+Don't forget close connector session with database and stop Spark. <br>
+
+```scala
+session.close()
+sc.stop()
+```
+
+Running-result of command line: <br>
+![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/insert_result_via_api.png)
+<br>
+
+Saving data
+===
+For saving data to Cassandra in Scala, there are some different ways to do it. <br>
+
+Execute Shell
+---
+This method just like above example about building a session and calling method 'execute' to do it.
+
+
+Convert to dataframe
+---
+These are 2 ways in this method to reach target. <br>
+
+One is calling method 'saveToCassandra' to write data into database. <br>
+
 ```scala
 val scDataframe = sc.parallelize(Seq(data))
 scDataframe.saveToCassandra(keyspace, table, SomeColumns("column1", "column2", "column3", "column4", "column5"))
 ```
 
-It has another way to save data into database. <br>
+Or it could converts data to Spark dataframe and save data into database. <br>
 
+```scala
+data.toDF().write
+  .format("org.apache.spark.sql.cassandra")
+  .options(Map("keyspace" -> "keyspace_name", "table" -> "table_name"))
+  .save()
+```
 
 ### Running Result
 Here is some parts of log message when running the project program: <br>
