@@ -2,6 +2,7 @@ package Akka_with_Cassandra_Connector.src.main.scala
 
 import akka.actor.{Actor, ActorLogging, ActorRef, Props}
 import org.apache.spark.{SparkConf, SparkContext}
+import com.datastax.spark.connector.cql.CassandraConnector
 import com.datastax.spark.connector._
 
 
@@ -17,6 +18,10 @@ class DatabaseKing extends Actor with ActorLogging {
     .setMaster("local[*]")
     .setAppName("CassandraConnector")
   val sc = new SparkContext(conf)
+
+  // Build connector session with database Cassandra
+  // https://stackoverflow.com/questions/28563809/delete-from-cassandra-table-in-spark
+  val session = CassandraConnector.apply(this.sc.getConf)
 
   def writeOneData(keyspace: String, table: String, data: (Int, Int, Int, Int, Int)): Unit = {
     val scDataframe = this.sc.parallelize(Seq(data))
@@ -41,6 +46,13 @@ class DatabaseKing extends Actor with ActorLogging {
   }
 
 
+  def writeDataWithSession(CASSANDRA_SCHEMA: String, table: String, data: (Int, Int, Int, Int, Int)): Unit = {
+    val insert = "INSERT INTO " + CASSANDRA_SCHEMA + "." + table + " (index1 , index2 , index3 , index4 , index5) VALUES " + data + ";"
+    this.session.execute(insert)
+    this.session.close()
+  }
+
+
   override def receive: Receive = {
 
     case SaveData =>
@@ -57,6 +69,8 @@ class DatabaseKing extends Actor with ActorLogging {
     case SaveDataToCassandra(content, data) =>
       log.info("Got data. Thank you for your help!")
       this.writeOneData("test_keyspace", "testwithakka", data)
+      // Or call this method to save data
+//      this.writeDataWithSession("test_keyspace", "testwithakka", data)
       this.currentTaskNum += 1
       if (this.currentTaskNum.equals(10)) {
         log.info("Finish all job!")
