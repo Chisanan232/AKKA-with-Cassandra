@@ -154,6 +154,8 @@ val scDataframe = sc.parallelize(Seq(data))
 scDataframe.saveToCassandra(keyspace, table, SomeColumns("column1", "column2", "column3", "column4", "column5"))
 ```
 
+It has another way to save data into database. <br>
+
 
 ### Running Result
 Here is some parts of log message when running the project program: <br>
