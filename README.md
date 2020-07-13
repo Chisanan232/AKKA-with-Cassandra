@@ -95,7 +95,8 @@ By the way, the option 'PRIMARY KEY' also could be set like list. So the cql she
 
 Finish all above, of cource could do some basic database operators: INSERT, UPDATE and DELETE. <br>
 
-* INSERT
+* INSERT <br>
+Add data into one specific table.
 
     INSERT INTO <table name> (<columns name>) VALUES (<values which mapping columns>);
 
@@ -103,7 +104,8 @@ Running-result of command line: <br>
 ![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/cqlsh/cqlsh_insert_cmd_result.png)
 <br>
 
-* UPDATE
+* UPDATE <br>
+Update data of target table.
 
     UPDATE <table name> SET <be updated column> <operator> <new value> WHERE <column (Primary key)> <operator> <new value>;
 
@@ -119,7 +121,8 @@ Running-result of command line: <br>
 ![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/cqlsh/cqlsh_update_cmd_result_after_run.png)
 <br>
 
-* DELETE
+* DELETE <br>
+Remove data from target table.
 
     DELETE FROM <table name> WHERE <column (Primary key)> <operator> <new value>;
 
