@@ -183,7 +183,7 @@ session.close()
 sc.stop()
 ```
 
-Running-result of command line: <br>
+Running-result: <br>
 ![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/insert_result_via_api.png)
 <br>
 
@@ -216,7 +216,7 @@ data.toDF().write
   .save()
 ```
 
-### Running Result
+### Project-Program Running Result
 Here is some parts of log message when running the project program: <br>
 
 * Spark log: <br>
