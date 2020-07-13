@@ -1,7 +1,5 @@
 package Akka_with_Cassandra_Connector.src.main.scala
 
-import Akka_with_Cassandra_Connector.src.main.scala.SparkSaver
-
 import akka.actor.{ActorRef, ActorSystem, Props}
 
 
