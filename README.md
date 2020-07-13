@@ -93,6 +93,46 @@ By the way, the option 'PRIMARY KEY' also could be set like list. So the cql she
 
     CREATE TABLE testWithAkka ( index1 int, index2 int, index3 int , index4 int , index5 int , PRIMARY KEY (index1) );
 
+Finish all above, of cource could do some basic database operators: INSERT, UPDATE and DELETE. <br>
+
+INSERT
+---
+Add data into one specific table. <br>
+
+    INSERT INTO <table name> (<columns name>) VALUES (<values which mapping columns>);
+
+Running-result of command line: <br>
+![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/cqlsh/cqlsh_insert_cmd_result.png)
+<br>
+
+UPDATE
+---
+Update data of target table. <br>
+
+    UPDATE <table name> SET <be updated column> <operator> <new value> WHERE <column (Primary key)> <operator> <new value>;
+
+In the lab, the CQL shell is <br>
+
+    UPDATE testwithakka SET index2 = 9999 WHERE index1 = 77;
+
+Running-result of command line: <br>
+![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/cqlsh/cqlsh_update_cmd_result_before_run.png)
+<br>
+
+Running-result of command line: <br>
+![](https://github.com/Chisanan232/AKKA-with-Cassandra/raw/master/docs/imgs/cqlsh/cqlsh_update_cmd_result_after_run.png)
+<br>
+
+DELETE
+---
+Remove data from target table. <br>
+
+    DELETE FROM <table name> WHERE <column (Primary key)> <operator> <new value>;
+
+In the lab, the CQL shell is <br>
+
+    DELETE FROM testwithakka WHERE index1 = 3;
+
 <br>
 
 
@@ -116,6 +156,8 @@ Call method 'saveToCassandra' to write data into database. <br>
 val scDataframe = sc.parallelize(Seq(data))
 scDataframe.saveToCassandra(keyspace, table, SomeColumns("column1", "column2", "column3", "column4", "column5"))
 ```
+
+It has another way to save data into database. <br>
 
 
 ### Running Result
