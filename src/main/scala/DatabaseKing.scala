@@ -21,7 +21,8 @@ class DatabaseKing extends Actor with ActorLogging {
 
   // Build connector session with database Cassandra
   // https://stackoverflow.com/questions/28563809/delete-from-cassandra-table-in-spark
-  val session = CassandraConnector.apply(this.sc.getConf)
+  val connector = CassandraConnector.apply(this.sc.getConf)
+  val session = connector.openSession()
 
   def writeOneData(keyspace: String, table: String, data: (Int, Int, Int, Int, Int)): Unit = {
     val scDataframe = this.sc.parallelize(Seq(data))
